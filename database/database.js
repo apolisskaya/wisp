@@ -1,6 +1,12 @@
 const fs = require('fs');
 const path = require('path');
-const { sequelize } = require('../database/setup');
+const { Sequelize } = require('sequelize');
+
+const sequelize = new Sequelize({
+    dialect: 'sqlite',
+    storage: path.join(__dirname, 'database.sqlite')
+});
+
 
 const checkDatabaseFile = () => {
     const dbPath = path.join(__dirname, 'database.sqlite');
@@ -26,6 +32,9 @@ const setupDatabase = async () => {
     }
 };
 
+setupDatabase();
+
 module.exports = {
-    setupDatabase
+    setupDatabase,
+    sequelize
 };

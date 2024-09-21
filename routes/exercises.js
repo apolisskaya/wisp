@@ -15,3 +15,5 @@ Returns list of exercises.
 router.get('/:workoutId', function(req, res, next) {
     res.send(req.params);
 });
+
+module.exports = router;
